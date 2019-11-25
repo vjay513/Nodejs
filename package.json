@@ -1,0 +1,25 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "NodeJs HomeWork",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "task1": "nodemon src/task1.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "javascript",
+    "npm"
+  ],
+  "author": "Vijay Krishna Bammidi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
