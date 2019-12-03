@@ -29,4 +29,5 @@ line).
 • The program should be started via npm script using nodemon (i.e. npm run task2).
 
 TASK 1.3
+
 Rewrite the above-mentioned programs to use babel (https://babeljs.io/) and ES6 modules.
