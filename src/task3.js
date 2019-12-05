@@ -1,15 +1,12 @@
 import csv from "csvtojson";
 import fs from "fs";
+import paths from "./constants";
 
-const writeText = fs.createWriteStream('node_mentoring_t1_2_input_example1.txt');
-
-var s = fs.createReadStream('node_mentoring_t1_2_input_example.csv')
+const writeText = fs.createWriteStream(paths.BASE_CSV_TEXT2);
+const stream = fs.createReadStream(paths.BASE_CSV_PATH)
         .pipe(csv())
         .on('data', (data) =>  writeText.write(data))
         .on('error', function(err){
             console.log('Error while reading file.', err);
         })
-        .on('end', function(){
-            console.log('After File Content Checked.');
-        });
 
