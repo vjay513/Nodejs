@@ -1,3 +1,7 @@
+function writeFunc(str){
+    process.stdout.write('Output' + str + '\n\n');
+}
+
 function dataHandler(data){ 
     const inputStr= data.toString();
     const splitStr = inputStr.split('');
@@ -5,7 +9,4 @@ function dataHandler(data){
     writeFunc(reverseStr);
 }
 
-writeFunc(str){
-    process.stdout.write('Output' + str + '\n\n');
-}
 process.openStdin().addListener('data', dataHandler);
