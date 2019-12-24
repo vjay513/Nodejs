@@ -1,4 +1,5 @@
-import * as Joi from '@hapi/joi'
+import * as Joi from '@hapi/joi';
+
 const schema = Joi.object().keys({
     login: Joi.string().required(),
     password: Joi.string()

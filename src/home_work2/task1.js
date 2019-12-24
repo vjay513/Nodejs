@@ -1,3 +1,4 @@
+import * as Joi from '@hapi/joi';
 const express = require('express');
 const collection = require('./db');
 const bodyQuerySchema = require('./validations');
@@ -22,13 +23,23 @@ function appStart(req, res){
 
 router.get('/users/:id', (request, response) => {
   const user = collection.getUserById(request);
-  response.json({ data: user });
+  if (!user) {
+    return response.status(404).end();
+  }else{
+    return response.json({ data: user });
+  }
 });
 
-router.get('/allUsers', (request, response) => {
-  const users = collection.getDatabase();
-  response.send({ data: users });
+
+app.get("/users", validator.query(queryParamSchema), (req, res) => {
+  const query = req.query.query;
+  const limit = req.query.limit || 10;
+  if (!query) {
+    return res.status(404).end();
+  }
+  return res.send(collection.searchUser(query, limit));
 });
+
 
 router.post('/user',validator.body(bodyQuerySchema),(req, res) => {
   collection.createUser(req);
@@ -37,7 +48,12 @@ router.post('/user',validator.body(bodyQuerySchema),(req, res) => {
 
 router.get('/search/:id',  (req, res)=> {
   const user = collection.searchById(req.params.id);
-  res.json({ data: user }); 
+  if (!user) {
+    return response.status(404).end();
+  }else{
+    return response.json({ data: user }); 
+  }
+  
 })
 
 router.delete('/delete/:id',(req, res)=> {
@@ -45,9 +61,12 @@ router.delete('/delete/:id',(req, res)=> {
   res.json({data:'Deleted successfully!'});
 });
 
-router.put('/update',(req, res)=> {
-  collection.updateUser(req);
-  res.json({data:'Updated successfully!'});
+router.put("/user/:id", validator.body(bodyQuerySchema),(req, res)=> {
+ let user =  collection.updateUser(req);
+  if (!user) {
+    return response.status(404).end();
+  }
+  return res.json({data:'Updated successfully!'});
 });
 
 router.get('/', appStart);

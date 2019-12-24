@@ -31,7 +31,15 @@ function deleteById(id){
 
 function updateUser(req){
     let item = filterById(req.body.id);
-    Object.assign(item,req.body);
+    return Object.assign(item,req.body);
+}
+
+
+function searchUser(login,limit){
+  let requestedUsers = db.filter(user => {
+    return user.login.indexOf(login) !== -1;
+  })
+  return requestedUsers.length <= limit ? requestedUsers : requestedUsers.slice(0,limit);
 }
 
 function UUID() {
@@ -56,4 +64,4 @@ function UUID() {
   function getDatabase(){
       return db;
   }
-module.exports = { getDatabase, getUserById, createUser, searchById, deleteById, updateUser};
+module.exports = { getDatabase, getUserById, createUser, searchById, deleteById, updateUser, searchUser};
