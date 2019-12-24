@@ -31,7 +31,7 @@ router.get('/users/:id',validator.body(bodyQuerySchema), (request, response) => 
 });
 
 
-app.get("/users", validator.query(queryParamSchema), (req, res) => {
+router.get("/users", validator.query(queryParamSchema), (req, res) => {
   const query = req.query.query;
   const limit = req.query.limit || 10;
   if (!query) {
