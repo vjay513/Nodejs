@@ -21,7 +21,7 @@ function appStart(req, res){
   res.json({ message: 'Server Working!!' });
 }
 
-router.get('/users/:id', (request, response) => {
+router.get('/users/:id',validator.body(bodyQuerySchema), (request, response) => {
   const user = collection.getUserById(request);
   if (!user) {
     return response.status(404).end();
