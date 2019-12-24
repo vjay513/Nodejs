@@ -1,36 +1,4 @@
-const db = [
-    {
-        id: "001",
-        login: 'user1',
-        password:'qwerty@123',
-        age:18,
-        isDeleted:false
-    },{
-        id: "002",
-        login: 'user2',
-        password:'qwerty@123',
-        age:19,
-        isDeleted:false
-    },{
-        id: "003",
-        login: 'user3',
-        password:'qwerty@123',
-        age:20,
-        isDeleted:false
-    },{
-        id: "004",
-        login: 'user4',
-        password:'qwerty@123',
-        age:21,
-        isDeleted:false
-    },{
-        id: "005",
-        login: 'user5',
-        password:'qwerty@123',
-        age:22,
-        isDeleted:false
-    }
-]
+const db = [];
 
 function getUserById(req){
     const user = db.filter((item)=>{
@@ -41,6 +9,7 @@ function getUserById(req){
 
 function createUser(req){
     req.body['id'] = UUID();
+    req.body['isDeleted'] = false;
     db.push(req.body);
 }
 
@@ -84,4 +53,7 @@ function UUID() {
     ].join("-");
   }
 
-module.exports = { db, getUserById, createUser, searchById, deleteById, updateUser};
+  function getDatabase(){
+      return db;
+  }
+module.exports = { getDatabase, getUserById, createUser, searchById, deleteById, updateUser};

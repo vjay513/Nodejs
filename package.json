@@ -19,6 +19,7 @@
   "author": "Vijay Krishna Bammidi",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^16.1.8",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "body-parser": "^1.19.0",
@@ -27,6 +28,7 @@
     "eslint": "^6.7.2",
     "event-stream": "^4.0.1",
     "express": "^4.17.1",
+    "express-joi-validation": "^4.0.3",
     "getstream-node": "^1.5.0",
     "mongoose": "^5.7.13",
     "stream": "0.0.2"
