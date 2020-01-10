@@ -7,8 +7,7 @@
     "task1.1": "nodemon src/home_work1/task1.js",
     "task1.2": "nodemon src/home_work1/task2.js",
     "task1.3": "babel-node src/home_work1/task3.js",
-    "task2.1": "babel-node src/home_work2/task1.js",
-    "task2.2": "babel-node src/home_work2/task2.js"
+    "task2.1": "babel-node src/home_work2/task1.js"
   },
   "keywords": [
     "nodejs",
@@ -30,8 +29,10 @@
     "express": "^4.17.1",
     "express-joi-validation": "^4.0.3",
     "getstream-node": "^1.5.0",
+    "http-status-codes": "^1.4.0",
     "mongoose": "^5.7.13",
-    "stream": "0.0.2"
+    "stream": "0.0.2",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
