@@ -1,7 +1,7 @@
-let Sequelize = require("sequelize");
-let config = require("../config/dbconfig");
+const Sequelize = require("sequelize");
+const config = require("../config/dbconfig");
 
-let sequelize = new Sequelize(
+const sequelize = new Sequelize(
   config.database,
   config.userName,
   config.password,

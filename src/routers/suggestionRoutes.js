@@ -1,20 +1,18 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 const Joi = require("joi");
 const validator = require("express-joi-validation").createValidator({});
 
-let userModel = require("../models/UserModel");
-let UserService = require("../services/userService");
+const userModel = require("../models/UserModel");
+const UserService = require("../services/userService");
 
-let userService = new UserService(userModel);
-
-const queryParamSchema = Joi.object({
-  query: Joi.string().required()
-});
+const userService = new UserService(userModel);
+const limit = 10;
+const queryParamSchema = require("../middlewares/validators").queryParamSchema;
 
 router.get("/", validator.query(queryParamSchema), (req, res) => {
   const query = req.query.query;
-  const limit = req.query.limit || 10;
+  const limit = req.query.limit || limit;
   if (!query) {
     return res.status(404).end();
   }
