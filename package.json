@@ -4,11 +4,12 @@
   "description": "NodeJs HomeWork",
   "main": "index.js",
   "scripts": {
-    "task1.1": "nodemon src/home_work1/task1.js",
-    "task1.2": "nodemon src/home_work1/task2.js",
-    "task1.3": "babel-node src/home_work1/task3.js",
-    "task2.1": "babel-node src/home_work2/task1.js",
-    "task3": "babel-node src/app.js"
+    "task1.1": "nodemon src/tasks/task1/task1.js",
+    "task1.2": "nodemon src/tasks/task1/task2.js",
+    "task1.3": "babel-node src/tasks/task1/task3.js",
+    "task2.1": "babel-node src/tasks/task2/task1.js",
+    "task3": "babel-node src/tasks/task3/app.js",
+    "task4": "babel-node src/app.js"
   },
   "keywords": [
     "nodejs",
