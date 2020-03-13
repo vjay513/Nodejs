@@ -3,7 +3,7 @@ const router = express.Router();
 const Joi = require("joi");
 const validator = require("express-joi-validation").createValidator({});
 
-const userModel = require("../models/UserModel");
+const userModel = require("../models").Users;
 const UserService = require("../services/userService");
 const userService = new UserService(userModel);
 

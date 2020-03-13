@@ -40,13 +40,14 @@
     "pg": "^7.17.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.3",
+    "sequelize-cli": "^5.5.1",
     "stream": "0.0.2",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "nodemon": "^2.0.1"
+    "eslint": "^6.7.2",
+    "nodemon": "^2.0.0"
   }
 }

@@ -6,7 +6,7 @@ const userRoutes = require("./routers/userRoutes");
 const groupRoutes = require("./routers/groupRoutes");
 const userGroupRoutes = require("./routers/userGroupRoutes");
 
-const sequelize = require('./database/models').sequelize;
+const sequelize = require('./models').sequelize;
 
 const app = express();
 
