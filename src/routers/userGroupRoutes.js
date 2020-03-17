@@ -14,10 +14,12 @@ const bodySchema = Joi.object().keys({
     users: Joi.array().required(),
   });
 
-router.post("/", validator.body(bodySchema), (req, res) => {
+router.post("/", validator.body(bodySchema), (req, res, next) => {
   userGroupService.addUsersToGroup(req.body).then(group => {
     res.send(group);
-  });
+  }).catch(error => {
+    next(error);
+   });
 });
 
 router.all("*", (req, res) => {

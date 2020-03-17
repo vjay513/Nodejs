@@ -10,7 +10,7 @@ const userService = new UserService(userModel);
 const limit = 10;
 const queryParamSchema = require("../middlewares/validators").queryParamSchema;
 
-router.get("/", validator.query(queryParamSchema), (req, res) => {
+router.get("/", validator.query(queryParamSchema), (req, res, next) => {
   const query = req.query.query;
   const limit = req.query.limit || limit;
   if (!query) {
@@ -18,7 +18,9 @@ router.get("/", validator.query(queryParamSchema), (req, res) => {
   }
   userService.searchUser(query, limit).then(users => {
     res.send(users);
-  });
+  }).catch(error => {
+    next(error);
+   });
 });
 
 router.all("*", (req, res) => {
