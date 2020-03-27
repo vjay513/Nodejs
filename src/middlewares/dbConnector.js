@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const config = require("../config/dbconfig");
+const winstonLogger = require('./middleware/winstonLogger');
 
 const sequelize = new Sequelize(
   config.database,
@@ -16,10 +17,10 @@ const sequelize = new Sequelize(
 
 sequelize.authenticate().then(
   suceess => {
-    console.log("suceess", suceess);
+    winstonLogger.suceess('success',suceess);
   },
   error => {
-    console.log("error", error);
+    winstonLogger.error('Error',error);
   }
 );
 
