@@ -1,11 +1,11 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 const Joi = require("joi");
 const validator = require("express-joi-validation").createValidator({});
 
-let groupModel = require("../models").Groups;
-let GroupService = require("../services/groupService");
-let groupService = new GroupService(groupModel);
+const groupModel = require("../models").Groups;
+const GroupService = require("../services/groupService");
+const groupService = new GroupService(groupModel);
 
 const bodySchema = Joi.object().keys({
   name: Joi.string().required(),
