@@ -1,14 +1,14 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 const Joi = require("joi");
 const validator = require("express-joi-validation").createValidator({});
 
-// let GroupUsersModel = require("../database/models").GroupUsers;
-let GroupModel = require("../models").Groups;
-let UserModel = require("../models").Users;
-let UserGroupService = require("../services/userGroupService");
+// const GroupUsersModel = require("../database/models").GroupUsers;
+const GroupModel = require("../models").Groups;
+const UserModel = require("../models").Users;
+const UserGroupService = require("../services/userGroupService");
 
-let userGroupService = new UserGroupService(UserModel,GroupModel);
+const userGroupService = new UserGroupService(UserModel,GroupModel);
 const bodySchema = Joi.object().keys({
     group: Joi.string().required(),
     users: Joi.array().required(),

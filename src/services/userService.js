@@ -1,54 +1,69 @@
-let Sequelize = require('sequelize');
-
+const Sequelize = require('sequelize');
 
 function UserService(model) {
   this.model = model;
 }
 
 UserService.prototype.createUser = async function(user) {
-  let data = await this.model.create(user);
-  return data.dataValues;
+  try{
+    const data = await this.model.create(user);
+    return data.dataValues; 
+  } catch (error) {
+    return error;
+  }
 };
 
 UserService.prototype.getUser = async function(id) {
-  let data = await this.model.findOne({
-    where: { id }
-  });
-  return data;
+  try{
+    const data = await this.model.findOne({
+      where: { id }
+    });
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
 
 UserService.prototype.deleteUser = async function(id) {
-  let user = await this.model.update(
-    { isDeleted: true },
-    {
-      where: { id },
-      returning: true,
-      plain: true
-    }
-  );
-  return user[1];
+  try {
+    const user = await this.model.update(
+      { isDeleted: true },
+      {
+        where: { id },
+        returning: true,
+        plain: true
+      }
+    );
+    return user[1];
+  } catch (error) {
+    return error;
+  }
 };
 
 UserService.prototype.updateUser =  async function(id, payload) {
   try {
-    let user = await this.model.update(payload, {
+    const user = await this.model.update(payload, {
       where: { id, isDeleted: false },
       returning: true,
       plain: true
     });
     return user ? user[1] : null;
-  } catch (exe) {
-    return null;
+  } catch (error) {
+    return error;
   }
 };
 
 UserService.prototype.searchUser = async function(limit, query) {
-  let iLike = Sequelize.Op.iLike;
-  let users = await this.model.findAll({
-    limit: limit,
-    where: { login: { [iLike]: query + "%" }, isDeleted: false }
-  });
-  return users;
+  try{
+    const iLike = Sequelize.Op.iLike;
+    const users = await this.model.findAll({
+      limit: limit,
+      where: { login: { [iLike]: query + "%" }, isDeleted: false }
+    });
+    return users;
+  } catch (error) {
+    return error;
+  }
 };
 
 module.exports = UserService;

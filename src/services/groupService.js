@@ -3,38 +3,54 @@ function GroupService(model) {
 }
 
 GroupService.prototype.createGroup = async function(group) {
-  let data = await this.model.create(group);
-  return data.dataValues;
+  try{
+    const data = await this.model.create(group);
+    return data.dataValues;
+  }catch(error){
+    return error
+  }
 };
 
 GroupService.prototype.getGroup = async function(id) {
-  let data = await this.model.findOne({
-    where: { id }
-  });
-  return data;
+  try{
+    const data = await this.model.findOne({
+      where: { id }
+    });
+    return data;
+  }catch(error){
+    return error
+  }
 };
 
 GroupService.prototype.deleteGroup = async function(id) {
-  let group = await this.model.destroy({ where: { id } });
-  return group;
+  try{
+    const group = await this.model.destroy({ where: { id } });
+    return group;
+  }catch(error){
+    return error
+  }
 };
 
 GroupService.prototype.updateGroup = async function(id, payload) {
   try {
-    let group = await this.model.update(payload, {
+    const group = await this.model.update(payload, {
       where: { id },
       returning: true,
       plain: true
     });
     return group ? group[1] : null;
-  } catch (exe) {
-    return null;
+  } catch (error) {
+    return error;
   }
 };
 
 GroupService.prototype.getAllGroups = async function() {
-  let groups = await this.model.findAll();
-  return groups;
+  try{
+    const groups = await this.model.findAll();
+    return groups;
+  }catch(error){
+    return error
+  }
 };
 
 module.exports = GroupService;
