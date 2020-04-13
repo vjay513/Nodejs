@@ -1,5 +1,5 @@
 const GroupService = require("../services/groupService");
-const data = { name: "shiva", permissions: ['READ','WRITE'], id: "idgyk" };
+const data = { name: "test", permissions: ['READ','WRITE'], id: "idgyk" };
 const mockModel = {
   create: () => {
     return { dataValues: [data] };
