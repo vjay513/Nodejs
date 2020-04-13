@@ -9,13 +9,19 @@ const env = process.env.NODE_ENV || 'production';
 const config = require(__dirname + '/../config/config.prod.json')[env];
 
 const db = {};
-let sequelize;
+const sequelize;
 
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+const dbConfig = {
+  username:process.env.dbUser,
+  password:process.env.password,
+  database:process.env.database,
+  dialect:process.env.dialect,
+  host:process.env.host,
+  protocol:process.env.protocol,
+  dialectOptions:{ssl:process.env.ssl === 'true'}
 }
+sequelize = new Sequelize(process.env.database, process.env.dbUser, process.env.password, dbConfig);
+
 
 fs
   .readdirSync(__dirname)
